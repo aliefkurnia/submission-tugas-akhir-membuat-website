@@ -64,8 +64,6 @@ nav a:hover {
 }
 
 main {
-  padding: 20px;
-
   display: flex;
   gap: 1.5rem;
 }
@@ -209,6 +207,7 @@ h3 {
   flex-direction: column;
   gap: 20px;
   width: 100%;
+  flex-grow: 1;
 }
 
 .card {
@@ -355,4 +354,38 @@ h3 {
 
 .footer-info p {
   margin: 5px 0;
+}
+.customer-service {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.customer-service-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.customer-service .text {
+  margin-bottom: 5px; /* Jarak antara teks dan ikon */
+  font-size: 14px;
+}
+
+.customer-service i {
+  font-size: 50px;
+  color: #0056b3;
+}
+
+.customer-service-content:hover i {
+  color: #c7c0c0b0;
 }
