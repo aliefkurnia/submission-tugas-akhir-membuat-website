@@ -381,11 +381,14 @@ h3 {
   font-size: 14px;
 }
 
-.customer-service i {
-  font-size: 50px;
-  color: #0056b3;
+.customer-service-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center secara horizontal */
 }
 
-.customer-service-content:hover i {
-  color: #c7c0c0b0;
+.customer-service-icon {
+  width: 60px; /* Atur lebar gambar sesuai kebutuhan */
+  height: 60px; /* Atur tinggi gambar sesuai kebutuhan */
+  margin-top: 5px; /* Jarak antara teks dan ikon */
 }
