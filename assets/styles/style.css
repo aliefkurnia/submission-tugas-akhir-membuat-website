@@ -289,16 +289,18 @@ h3 {
   border-radius: 5% 5% 0 0;
 }
 
-.card-partnerships header {
+.card-partnerships-content {
   text-align: center;
 }
 
-.card-partnerships header > h2 {
+.card-partnerships-content > h2 {
   font-size: 3em;
 }
-.card-partnerships header > P {
+
+.card-partnerships-content > p {
   font-size: 1.5em;
 }
+
 .partner-logos {
   display: flex;
   justify-content: center;
