@@ -4,209 +4,315 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bookingin</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Bookingin — Find Your Perfect Stay</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="assets/styles/style.css" />
   </head>
   <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="#booking">Bookings</a></li>
-          <li><a href="#artikel">Article</a></li>
-          <li><a href="#partner">Partnership</a></li>
-          <li><a href="#">Support</a></li>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#" class="nav-brand">
+          <i class="fas fa-hotel"></i> Bookingin
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#hotels">Hotels</a></li>
+          <li><a href="#articles">Articles</a></li>
+          <li><a href="#partners">Partners</a></li>
         </ul>
         <div class="nav-actions">
-          <select class="language-selector">
-            <option value="id">IND</option>
-            <option value="en">ENG</option>
-          </select>
-          <a href="#login" class="nav-button login">
-            <i class="fa fa-user"></i> Login
-          </a>          
-          <a href="#signup" class="nav-button signup">Register</a>
+          <button class="btn btn-outline" id="loginBtn">Login</button>
+          <button class="btn btn-primary" id="registerBtn">Register</button>
         </div>
-      </nav>
-    
-    <div class="jumbotron" id="booking">
-      <h1>Bookingin</h1>
-      <p>
-        Bookingin adalah platform pencarian hotel yang menyediakan berbagai
-        pilihan akomodasi dengan harga bersaing.
-      </p>
-      <form class="search-form">
-        <div class="form-group">
-          <label for="city">Kota:</label>
-          <input
-            type="text"
-            id="city"
-            name="city"
-            placeholder="Masukkan kota"
-          />
-        </div>
-        <div class="form-group">
-          <label for="from-date">Dari Tanggal:</label>
-          <input type="date" id="from-date" name="from-date" />
-        </div>
-        <div class="form-group">
-          <label for="to-date">Hingga Tanggal:</label>
-          <input type="date" id="to-date" name="to-date" />
-        </div>
-        <div class="form-group">
-          <label for="guests">Tamu:</label>
-          <input
-            type="number"
-            id="guests"
-            name="guests"
-            placeholder="Jumlah tamu"
-            min="1"
-          />
-        </div>
-        <div class="form-group">
-          <label for="rooms">Kamar:</label>
-          <input
-            type="number"
-            id="rooms"
-            name="rooms"
-            placeholder="Jumlah kamar"
-            min="1"
-          />
-        </div>
-        <button type="submit" class="search-button">Cari</button>
-      </form>
-    </div>
-  </header>
+      </div>
+    </nav>
 
-    <main>
-      <div class="card-container">
-        <div class="card" id="artikel">
-          <img src="assets/image/article1.jpg" alt="article1" class="card-image" />
-          <div class="card-content">
-            <h2>Elegansi dan Kenyamanan di Hotel A</h2>
-            <p>
-              Hotel A adalah destinasi yang sempurna bagi Anda yang mencari kombinasi antara kenyamanan dan desain modern...
-            </p>
-            <p>
-              <strong>Fasilitas Utama:</strong>
-              <ul>
-                <li>Kolam renang indoor dan outdoor</li>
-                <li>Pusat kebugaran</li>
-                <li>Spa dan pusat kesehatan</li>
-                <li>Restoran dan bar</li>
-                <li>Wi-Fi gratis</li>
-                <li>Layanan kamar 24 jam</li>
-              </ul>
-            </p>
-            <a href="" class="read-more-button">Read More</a>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Find Your Perfect Stay</h1>
+        <p>Discover amazing hotels at the best prices. Book your dream vacation today.</p>
+
+        <!-- Search Form -->
+        <form class="search-form" id="searchForm">
+          <div class="form-group">
+            <label for="city"><i class="fas fa-map-marker-alt"></i> Destination</label>
+            <input type="text" id="city" placeholder="Where are you going?" autocomplete="off" />
+            <div class="city-suggestions" id="citySuggestions"></div>
+          </div>
+          <div class="form-group">
+            <label for="checkin"><i class="fas fa-calendar"></i> Check-in</label>
+            <input type="date" id="checkin" />
+          </div>
+          <div class="form-group">
+            <label for="checkout"><i class="fas fa-calendar-check"></i> Check-out</label>
+            <input type="date" id="checkout" />
+          </div>
+          <div class="form-group">
+            <label for="guests"><i class="fas fa-user-friends"></i> Guests</label>
+            <select id="guests">
+              <option value="1">1 Guest</option>
+              <option value="2" selected>2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5">5+ Guests</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-search">
+            <i class="fas fa-search"></i> Search
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="section destinations" id="hotels">
+      <div class="container">
+        <div class="section-header">
+          <h2>Popular Hotels</h2>
+          <p>Handpicked accommodations loved by travelers</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="jakarta">Jakarta</button>
+          <button class="filter-btn" data-filter="bali">Bali</button>
+          <button class="filter-btn" data-filter="yogyakarta">Yogyakarta</button>
+          <button class="filter-btn" data-filter="bandung">Bandung</button>
+        </div>
+
+        <!-- Hotel Grid -->
+        <div class="hotel-grid" id="hotelGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="section articles" id="articles">
+      <div class="container">
+        <div class="section-header">
+          <h2>Travel Tips & Stories</h2>
+          <p>Inspiration for your next adventure</p>
+        </div>
+        <div class="article-grid">
+          <article class="article-card featured">
+            <div class="article-image">
+              <img src="assets/image/article1.jpg" alt="Luxury Hotel" />
+              <span class="article-badge">Featured</span>
+            </div>
+            <div class="article-content">
+              <div class="article-meta">
+                <span><i class="fas fa-clock"></i> 5 min read</span>
+                <span><i class="fas fa-tag"></i> Luxury</span>
+              </div>
+              <h3>Elegance & Comfort at Grand Hyatt</h3>
+              <p>Discover the perfect blend of modern design and timeless comfort. From infinity pools to world-class dining, experience hospitality at its finest.</p>
+              <a href="#" class="article-link">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="article-card">
+            <div class="article-image">
+              <img src="assets/image/article2.jpg" alt="Culinary" />
+            </div>
+            <div class="article-content">
+              <div class="article-meta">
+                <span><i class="fas fa-clock"></i> 3 min read</span>
+                <span><i class="fas fa-tag"></i> Food</span>
+              </div>
+              <h3>Culinary Adventures in Bali</h3>
+              <p>Explore the rich flavors of Indonesian cuisine with our curated dining experiences across the island of gods.</p>
+              <a href="#" class="article-link">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="article-card">
+            <div class="article-image">
+              <img src="assets/image/article3.jpg" alt="Pool" />
+            </div>
+            <div class="article-content">
+              <div class="article-meta">
+                <span><i class="fas fa-clock"></i> 4 min read</span>
+                <span><i class="fas fa-tag"></i> Wellness</span>
+              </div>
+              <h3>Best Hotel Pools in Indonesia</h3>
+              <p>Dive into luxury with our top picks for the most stunning hotel pools, from rooftop infinity edges to tropical lagoons.</p>
+              <a href="#" class="article-link">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number" data-target="15000">0</div>
+            <div class="stat-label">Hotels Listed</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="500000">0</div>
+            <div class="stat-label">Happy Guests</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="120">0</div>
+            <div class="stat-label">Cities Covered</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="4">0</div>
+            <div class="stat-label">Avg. Rating</div>
           </div>
         </div>
-      
-        <div class="card">
-          <img src="assets/image/article2.jpg" alt="article2" class="card-image" />
-          <div class="card-content">
-            <h2>Pengalaman Kuliner Istimewa di Hotel B</h2>
-            <p>
-              Restoran di Hotel B menawarkan pengalaman kuliner yang luar biasa dengan berbagai pilihan hidangan internasional...
-            </p>
-            <p>
-              <strong>Menu Unggulan:</strong>
-              <ul>
-                <li>Sarapan prasmanan dengan berbagai pilihan makanan</li>
-                <li>Hidangan gourmet untuk makan siang dan malam</li>
-                <li>Pilihan menu vegetarian dan bebas gluten</li>
-                <li>Makanan penutup dan minuman khas</li>
-              </ul>
-            </p>
-            <a href="" class="read-more-button">Read More</a>
+      </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="section partners" id="partners">
+      <div class="container">
+        <div class="section-header">
+          <h2>Trusted Partners</h2>
+          <p>We collaborate with the best in the industry</p>
+        </div>
+        <div class="partner-logos">
+          <div class="partner-logo">
+            <img src="assets/image/dicoding-logo.png" alt="Dicoding" />
+          </div>
+          <div class="partner-logo">
+            <img src="assets/image/traveloka.png" alt="Traveloka" />
+          </div>
+          <div class="partner-logo">
+            <img src="assets/image/agoda.png" alt="Agoda" />
           </div>
         </div>
-      
-        <div class="card">
-          <img src="assets/image/article3.jpg" alt="article3" class="card-image" />
-          <div class="card-content">
-            <h2>Kolam Renang dan Fasilitas Mewah di Hotel C</h2>
-            <p>
-              Kolam renang di Hotel C adalah fitur utama yang menawarkan tempat bersantai dan berolahraga...
-            </p>
-            <p>
-              <strong>Fasilitas Tambahan:</strong>
-              <ul>
-                <li>Kolam renang outdoor dengan area berjemur</li>
-                <li>Kolam renang indoor dengan suhu terkendali</li>
-                <li>Pusat kebugaran dengan peralatan canggih</li>
-                <li>Ruang yoga dan meditasi</li>
-                <li>Layanan handuk dan minuman ringan di area kolam renang</li>
-              </ul>
-            </p>
-            <a href="" class="read-more-button">Read More</a>
-          </div>
-        </div>
-        <article class="card-partnerships" id="partner">
-          <div class="card-partnerships-content">
-            <h2>Our Partnerships</h2>
-            <p>Meet Our Valued Partners</p>
-            <div class="partner-logos">
-              <img src="assets/image/dicoding-logo.png" alt="Dicoding Logo" class="partner-logo" />
-              <img src="assets/image/traveloka.png" alt="Traveloka Logo" class="partner-logo" />
-              <img src="assets/image/agoda.png" alt="Agoda Logo" class="partner-logo" />
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <h3><i class="fas fa-hotel"></i> Bookingin</h3>
+            <p>Your trusted platform for finding the perfect accommodation worldwide.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
           </div>
-        </article>
-      </div>
-      <aside class="customer-service">
-        <div class="customer-service-content">
-          <span class="text">Contact Us</span>
-          <img src="assets/image/customer-service.png" alt="Customer Service Icon" class="customer-service-icon" />
+          <div class="footer-links">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Safety</a></li>
+              <li><a href="#">Cancellation</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Contact</h4>
+            <ul>
+              <li><i class="fas fa-envelope"></i> info@bookingin.com</li>
+              <li><i class="fas fa-phone"></i> +62 21 1234 5678</li>
+              <li><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</li>
+            </ul>
+          </div>
         </div>
-      </aside>
-      
-    
-    
-  </main>
-  
-  
-    
-  
-
-  <footer>
-    <div class="footer-content">
-      <div class="footer-nav">
-        <ul>
-          <li><a href="#booking">Bookings</a></li>
-          <li><a href="#artikel">Article</a></li>
-          <li><a href="#partner">Partnership</a></li>
-          <li><a href="#">Support</a></li>
-        </ul>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Bookingin. All Rights Reserved.</p>
+        </div>
       </div>
-      <div class="footer-info">
-        <p>&copy; 2024 Bookingin. All Rights Reserved.</p>
-        <p>123 Hotel Street, City, Country</p>
-        <p>Email: info@bookingin.com | Phone: +123 456 7890</p>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+      <div class="modal-content">
+        <button class="modal-close" id="loginClose">&times;</button>
+        <h2>Welcome Back</h2>
+        <p>Login to your account</p>
+        <form id="loginForm">
+          <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="Email address" required />
+          </div>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" required />
+          </div>
+          <div class="form-options">
+            <label><input type="checkbox" /> Remember me</label>
+            <a href="#">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Login</button>
+        </form>
+        <p class="modal-switch">Don't have an account? <a href="#" id="switchToRegister">Register</a></p>
       </div>
     </div>
-  </footer>
-  
-  
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+      <div class="modal-content">
+        <button class="modal-close" id="registerClose">&times;</button>
+        <h2>Create Account</h2>
+        <p>Join Bookingin today</p>
+        <form id="registerForm">
+          <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Full name" required />
+          </div>
+          <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="Email address" required />
+          </div>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" required />
+          </div>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Confirm password" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Register</button>
+        </form>
+        <p class="modal-switch">Already have an account? <a href="#" id="switchToLogin">Login</a></p>
+      </div>
+    </div>
+
+    <!-- Hotel Detail Modal -->
+    <div class="modal" id="hotelModal">
+      <div class="modal-content modal-large">
+        <button class="modal-close" id="hotelClose">&times;</button>
+        <div class="hotel-detail" id="hotelDetail">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="assets/scripts/app.js"></script>
   </body>
 </html>
-
-
-<script>
-  const fromDateInput = document.getElementById('from-date');
-  const toDateInput = document.getElementById('to-date');
-
-  const today = new Date();
-  const tomorrow = new Date(today);
-  tomorrow.setDate(today.getDate() + 1);
-
-  const formatDate = (date) => {
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const day = String(date.getDate()).padStart(2, '0');
-      return `${year}-${month}-${day}`;
-  };
-
-  fromDateInput.value = formatDate(today);
-  toDateInput.value = formatDate(tomorrow);
-</script>
